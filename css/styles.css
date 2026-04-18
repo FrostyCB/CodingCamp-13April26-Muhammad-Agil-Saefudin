@@ -1,0 +1,291 @@
+/* CSS custom properties */
+:root {
+  --color-food: #FF6384;
+  --color-transport: #36A2EB;
+  --color-fun: #FFCE56;
+
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --text: #1a1a2e;
+  --text-muted: #6b7280;
+  --border: #e5e7eb;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --radius: 8px;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Header */
+header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+#balance {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* Main layout — flexbox column */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 640px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+
+/* Card-style sections */
+main section {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+}
+
+/* Form */
+#transaction-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+#transaction-form input,
+#transaction-form select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--surface);
+}
+
+#transaction-form input:focus,
+#transaction-form select:focus {
+  outline: 2px solid var(--color-transport);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+#transaction-form button[type="submit"] {
+  padding: 0.55rem 1.25rem;
+  background: var(--text);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+#transaction-form button[type="submit"]:hover {
+  opacity: 0.85;
+}
+
+#form-error {
+  font-size: 0.875rem;
+  color: #dc2626;
+  min-height: 1.25rem;
+}
+
+/* Transaction list */
+#transaction-list {
+  list-style: none;
+  max-height: 320px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#transaction-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.75rem;
+  border-radius: calc(var(--radius) - 2px);
+  border-left: 4px solid var(--border);
+  background: var(--bg);
+  font-size: 0.9rem;
+}
+
+/* Category accent colors on list items */
+#transaction-list li[data-category="Food"] {
+  border-left-color: var(--color-food);
+}
+
+#transaction-list li[data-category="Transport"] {
+  border-left-color: var(--color-transport);
+}
+
+#transaction-list li[data-category="Fun"] {
+  border-left-color: var(--color-fun);
+}
+
+#transaction-list li .tx-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+#transaction-list li .tx-amount {
+  margin: 0 0.75rem;
+  font-weight: 600;
+}
+
+#transaction-list li .tx-category {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-right: 0.75rem;
+}
+
+#transaction-list li button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0 0.25rem;
+}
+
+#transaction-list li button:hover {
+  color: #dc2626;
+}
+
+/* Chart */
+#chart-section {
+  display: flex;
+  justify-content: center;
+}
+
+#expense-chart {
+  max-width: 320px;
+  width: 100%;
+}
+
+/* Custom category section */
+#custom-category-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+#custom-category-section input {
+  flex: 1;
+  min-width: 140px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  color: var(--text);
+  background: var(--surface);
+}
+
+#custom-category-section input:focus {
+  outline: 2px solid var(--color-transport);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+#add-category-btn {
+  padding: 0.5rem 1rem;
+  background: var(--text-muted);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+#add-category-btn:hover {
+  opacity: 0.85;
+}
+
+#category-error {
+  width: 100%;
+  font-size: 0.875rem;
+  color: #dc2626;
+  min-height: 1.25rem;
+}
+
+/* Sort controls */
+#sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+#sort-select {
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  color: var(--text);
+  background: var(--surface);
+  cursor: pointer;
+}
+
+/* Theme toggle button */
+#theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.3rem 0.6rem;
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* Dark mode */
+body.dark {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border: #334155;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+body.dark #transaction-form input,
+body.dark #transaction-form select,
+body.dark #custom-category-section input,
+body.dark #sort-select {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+body.dark #transaction-list li {
+  background: #0f172a;
+}

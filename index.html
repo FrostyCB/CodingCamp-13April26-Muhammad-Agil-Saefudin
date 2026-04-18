@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Expense Tracker</h1>
+      <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+      <div id="balance">Total: $0.00</div>
+    </header>
+
+    <main>
+      <section id="form-section">
+        <form id="transaction-form">
+          <input id="item-name" type="text" placeholder="Item name" />
+          <input id="item-amount" type="number" min="0.01" step="0.01" placeholder="Amount" />
+          <select id="item-category">
+            <option value="">Select category</option>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Fun">Fun</option>
+          </select>
+          <button type="submit">Add</button>
+          <div id="form-error" aria-live="polite"></div>
+        </form>
+        <div id="custom-category-section">
+          <input id="new-category" type="text" placeholder="New category name" />
+          <button id="add-category-btn" type="button">Add Category</button>
+          <div id="category-error" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section id="list-section">
+        <div id="sort-controls">
+          <label for="sort-select">Sort by:</label>
+          <select id="sort-select">
+            <option value="">Default order</option>
+            <option value="amount-desc">Amount: High → Low</option>
+            <option value="amount-asc">Amount: Low → High</option>
+            <option value="category-asc">Category: A → Z</option>
+          </select>
+        </div>
+        <ul id="transaction-list"></ul>
+      </section>
+
+      <section id="chart-section">
+        <canvas id="expense-chart"></canvas>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
